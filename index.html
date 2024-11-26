@@ -9,8 +9,196 @@
     <title>Squad Builder Pro | EA FC 25 Tactics & Formations</title>
 </head>
 <body>
+<div class="absolute z-[-10]  w-[100%]">
+    <img class="w-[100%] h-[100%]" src="./assets/public/images/stadium_background.webp" alt="">
+    <div class="w-[100%] h-[100%]  absolute top-0 bg-gradient-to-t from-[#202020] to-transparent">
+    
+    </div>
+</div>
+<!-- Div For Shadow -->
+<header class="w-[100%] h-[120px] bg-gradient-to-b from-[#202020] to-transparent flex justify-center items-center">
+    <h1 class="font-bold text-3xl text-white">Squad Builder Pro</h1>
 
+</header>
+<div class="centerContainer flex justify-center">
+    <div class="container">
+        <main class="px-[50px] grid grid-cols-12">
+            <!-- Terrain Space -->
+            <div class="col-span-9 relative max-h-[1000px] ">
+                <div class="ThePlace flex justify-center items-center">
+                    <img class=" w-[100%]" src="./assets/public/images/terainPosition.svg" alt="">
+                </div>
+
+                
+            </div>
+            <!-- Form -->
+            <div class="col-span-3 w-[100%] bg-[#202020] rounded-[8px]">
+                <!-- Select Option For Tactice -->
+                <div class="p-[10px] ">
+                    <select class="cursor-pointer w-[100%] h-[40px] p-[10px] bg-[#404040] text-white rounded-[4px]" name="" id="SelectFormation">
+                        <option disabled value="">Formation Select</option>
+                        <option value="442">4-4-2</option>
+                        <option value="433">4-3-3</option>
+                    </select>
+                </div>
+                <hr class="mx-[10px] opacity-20 my-[20px]">
+                <form action="">
+                    <div class="flex flex-col gap-5 p-[10px] ">
+
+                        <div class="flex gap-1 flex-col col-span-1">
+                            <label class="text-white font-bold text-xl" for="">Name</label>
+                            <input class="w-[100%] h-[40px] p-[10px] bg-[#404040] text-white rounded-[4px] border border-white/50 " name="" id="name" />
+                        </div>
+                        <!-- Inputs flexible -->
+                        <div class="grid grid-cols-12 gap-6">
+                            <div class="flex gap-1 flex-col col-span-5">
+                                <label class="text-white font-bold text-xl" for="">Photo URL</label>
+                                <input class="w-[100%] h-[40px] p-[10px] bg-[#404040] text-white rounded-[4px] border border-white/50 " name="" id="" />
+                            </div>
+                            <div class="col-span-2  text-white flex justify-center items-center h-[40px] self-end">
+                                ou
+                            </div>
+                            <div class="flex gap-1 flex-col col-span-5">
+                                <label class="text-white font-bold text-xl" for="">Photo Upload</label>
+                                <input class="w-[100%] h-[40px] p-[10px] bg-[#404040] text-white rounded-[4px] border border-white/50 " accept="image/png" type="file" name="" id="" />
+                            </div>
+                         </div>
+                           <!-- Input -->
+                        <div class="flex gap-1 flex-col">
+                            <label class="text-white font-bold text-xl" for="">Position</label>
+                            <!-- <input class="w-[100%] h-[40px] p-[10px] bg-[#404040] text-white rounded-[4px] border border-white/50 " name="" id="" /> -->
+                             <select class="w-[100%] h-[40px] p-[10px] bg-[#404040] text-white rounded-[4px] border border-white/50 "  name="" id="PositionSelection">
+                                 <option value="CB">CB (Défenseurs centraux)</option>
+                                 <option value="CM">CM (Milieux centraux)</option>
+                                 <option value="LB">LB (Latéral gauche)</option>
+                                 <option value="RB">RB (Latéral droit)</option>
+                                 <option value="LW">LW (Ailier gauche)</option>
+                                 <option value="RW">RW (Ailier droit)</option>
+                                 <option value="LM">LM (Ailier gauche)</option>
+                                 <option value="RM">RM (Ailier droit)</option>
+                                 <option value="ST">ST (Attaquant central)</option>
+                                 <option value="GK">GK</option>
+                             </select>
+                        </div>
+                        <!-- Input -->
+                        <div class="flex gap-1 flex-col">
+                            <label class="text-white font-bold text-xl" for="">Nationality</label>
+                            <input class="w-[100%] h-[40px] p-[10px] bg-[#404040] text-white rounded-[4px] border border-white/50 " name="" id="" />
+                        </div>
+                        <!-- Input -->
+                        <div class="flex gap-1 flex-col">
+                            <label class="text-white font-bold text-xl" for="">Flag</label>
+                            <input class="w-[100%] h-[40px] p-[10px] bg-[#404040] text-white rounded-[4px] border border-white/50 " name="" id="" />
+                        </div>
+                        <!-- Input -->
+                        <div class="flex gap-1 flex-col">
+                            <label class="text-white font-bold text-xl" for="">Club</label>
+                            <input class="w-[100%] h-[40px] p-[10px] bg-[#404040] text-white rounded-[4px] border border-white/50 " name="" id="" />
+                        </div>
+                        <!-- Input -->
+                        <div class="flex gap-1 flex-col">
+                            <label class="text-white font-bold text-xl" for="">Logo Url</label>
+                            <input class="w-[100%] h-[40px] p-[10px] bg-[#404040] text-white rounded-[4px] border border-white/50 " type="url" name="" id="" />
+                        </div>
+                        <!-- Inputs flexible -->
+                        <!-- Input For Other Players -->
+                         <div class="NormalPlayer grid grid-cols-2 gap-6">
+                            <div class=" flex gap-1 flex-col col-span-1">
+                                <label class="text-white font-bold text-xl" for="">Rating</label>
+                                <input class="w-[100%] h-[40px] p-[10px] bg-[#404040] text-white rounded-[4px] border border-white/50 " name="" id="" />
+                            </div>
+                            <div class="flex gap-1 flex-col col-span-1">
+                                <label class="text-white font-bold text-xl" for="">Pace</label>
+                                <input class="w-[100%] h-[40px] p-[10px] bg-[#404040] text-white rounded-[4px] border border-white/50 " type="number" name="" id="" />
+                            </div>
+                         </div>
+                         <!-- Inputs flexible -->
+                         <div class="NormalPlayer grid grid-cols-2 gap-6">
+                            <div class="flex gap-1 flex-col col-span-1">
+                                <label class="text-white font-bold text-xl" for="">Shooting</label>
+                                <input class="w-[100%] h-[40px] p-[10px] bg-[#404040] text-white rounded-[4px] border border-white/50 " type="number" name="" id="" />
+                            </div>
+                            <div class="flex gap-1 flex-col col-span-1">
+                                <label class="text-white font-bold text-xl" for="">Passing</label>
+                                <input class="w-[100%] h-[40px] p-[10px] bg-[#404040] text-white rounded-[4px] border border-white/50 " type="number" name="" id="" />
+                            </div>
+                         </div>
+                         <!-- Inputs flexible -->
+                         <div class="NormalPlayer grid grid-cols-2 gap-6">
+                            <div class="flex gap-1 flex-col col-span-1">
+                                <label class="text-white font-bold text-xl" for="">Dribbling</label>
+                                <input class="w-[100%] h-[40px] p-[10px] bg-[#404040] text-white rounded-[4px] border border-white/50 " type="number" name="" id="" />
+                            </div>
+                            <div class="flex gap-1 flex-col col-span-1">
+                                <label class="text-white font-bold text-xl" for="">Defending</label>
+                                <input class="w-[100%] h-[40px] p-[10px] bg-[#404040] text-white rounded-[4px] border border-white/50 " type="number" name="" id="" />
+                            </div>
+                         </div>
+                        <div class="NormalPlayer flex gap-1 flex-col col-span-1">
+                            <label class="text-white font-bold text-xl" for="">physical</label>
+                            <input class="w-[100%] h-[40px] p-[10px] bg-[#404040] text-white rounded-[4px] border border-white/50 " type="number" name="" id="" />
+                        </div>
+
+                        <!-- Inputs For GK -->
+                        <div class="GK hidden flex gap-1 flex-col col-span-1">
+                            <label class="text-white font-bold text-xl" for="">Rating</label>
+                            <input class="w-[100%] h-[40px] p-[10px] bg-[#404040] text-white rounded-[4px] border border-white/50 " type="number" name="" id="" />
+                        </div>
+                        <div class="GK hidden grid grid-cols-2 gap-6">
+                            <div class="flex gap-1 flex-col col-span-1">
+                                <label class="text-white font-bold text-xl" for="">Diving</label>
+                                <input class="w-[100%] h-[40px] p-[10px] bg-[#404040] text-white rounded-[4px] border border-white/50 " name="" id="" />
+                            </div>
+                            <div class="flex gap-1 flex-col col-span-1">
+                                <label class="text-white font-bold text-xl" for="">Handling</label>
+                                <input class="w-[100%] h-[40px] p-[10px] bg-[#404040] text-white rounded-[4px] border border-white/50 " type="number" name="" id="" />
+                            </div>
+                         </div>
+                         <!-- Inputs flexible -->
+                         <div class="GK hidden grid grid-cols-2 gap-6">
+                            <div class="flex gap-1 flex-col col-span-1">
+                                <label class="text-white font-bold text-xl" for="">Kicking</label>
+                                <input class="w-[100%] h-[40px] p-[10px] bg-[#404040] text-white rounded-[4px] border border-white/50 " type="number" name="" id="" />
+                            </div>
+                            <div class="flex gap-1 flex-col col-span-1">
+                                <label class="text-white font-bold text-xl" for="">Reflexes</label>
+                                <input class="w-[100%] h-[40px] p-[10px] bg-[#404040] text-white rounded-[4px] border border-white/50 " type="number" name="" id="" />
+                            </div>
+                         </div>
+                         <!-- Inputs flexible -->
+                         <div class="GK hidden grid grid-cols-2 gap-6">
+                            <div class="flex gap-1 flex-col col-span-1">
+                                <label class="text-white font-bold text-xl" for="">Speed</label>
+                                <input class="w-[100%] h-[40px] p-[10px] bg-[#404040] text-white rounded-[4px] border border-white/50 " type="number" name="" id="" />
+                            </div>
+                            <div class="flex gap-1 flex-col col-span-1">
+                                <label class="text-white font-bold text-xl" for="">Positioning</label>
+                                <input class="w-[100%] h-[40px] p-[10px] bg-[#404040] text-white rounded-[4px] border border-white/50 " type="number" name="" id="" />
+                            </div>
+                         </div>
+                        
+
+    
+                        <!-- Button -->
+                        <div class="grid grid-cols-2 gap-6 mt-5">
+                            <div class="flex gap-1 flex-col col-span-1">
+                                <input class="bg-[#4842C2] w-[100%] h-[40px] p-[10px] text-white rounded-[4px] border border-white/50 cursor-pointer" type="button" value="Add Player" name="" id="AddButton" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+</div>
+
+
+
+
+
+
+<script src="./assets/src/script/script.js"></script>
 <!-- Script Js For Icons From FontAwsome -->
-<script src="https://kit.fontawesome.com/352cf65264.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/285f192ded.js" crossorigin="anonymous"></script>
 </body>
 </html>
