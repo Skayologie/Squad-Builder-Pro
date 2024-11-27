@@ -21,7 +21,36 @@ input[type=number] {
 
 .ContainerBg{
     background-color: red;
+  }
+
+#formation{
+  width: 100%;
+  position: absolute;
+  height: 100%;
+  top: 0;
 }
+#TerrainSpace{
+  min-width: 1078px;
+  max-width: 1078px;
+  scale: .8;
+  transition: 1s;
+}
+@media screen and (max-width: 1532px) {
+  #TerrainSpace{
+    transition: 1s;
+  scale: .7
+}
+
+}
+/* Au niveau le plus haut du code */
+
+/* Au niveau le plus haut du code */
+/* @media screen and (max-width: 1500px) {
+  .cardIndiv{
+    scale: .8;
+    transform: translateY(-100px);
+  }
+} */
 
 /* Control Every Element Card */
 #card1,

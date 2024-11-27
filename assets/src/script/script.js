@@ -116,6 +116,7 @@ for (const element of allCardsDispo) {
 for (const element of buttonsCard) {
     
     element.addEventListener("click",(e)=>{
+        document.getElementById("TheEmptyMessage").style.display = "none"
         FormAddplayer.classList.remove("hidden")
         let elementPosition = window.getComputedStyle(element.parentElement).gridTemplateAreas
         PositionSelect.value = elementPosition.replace(/['"]+/g, '')
