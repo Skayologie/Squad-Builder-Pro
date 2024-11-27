@@ -96,4 +96,51 @@ input[type=number] {
     top: 62%;
   }
 
+/*  433 Positionment  */
+.formation-433 #card1 {
+    top: 2%;
+    left: 19.5%;
+  }
+  .formation-433 #card2 {
+    top: 1%;
+    left: 50%;
+  }
+  .formation-433 #card3 {
+    top: 2%;
+    left: 80.5%;
+  }
+  .formation-433 #card4 {
+    top: 25%;
+    left: 25.5%;
+  }
+  .formation-433 #card5 {
+    top: 28%;
+    left: 50%;
+  }
+  .formation-433 #card6 {
+    top: 25%;
+    left: 74.5%;
+  }
+  .formation-433 #card7 {
+    top: 50%;
+    left: 15.5%;
+  }
+  .formation-433 #card8 {
+    top: 54%;
+    left: 32.5%;
+  }
+  .formation-433 #card9 {
+    top: 54%;
+    left: 67.5%;
+  }
+  .formation-433 #card10 {
+    top: 50%;
+    left: 84.5%;
+  }
+  .formation-433 #card11 {
+    left: 50%;
+    top: 63%;
+  }
+  
+
 
