@@ -19,9 +19,7 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
-.ContainerBg{
-    background-color: red;
-  }
+
 
 #formation{
   width: 100%;
@@ -35,22 +33,13 @@ input[type=number] {
   scale: .8;
   transition: 1s;
 }
-@media screen and (max-width: 1532px) {
+@media screen and (max-width: 1540px) {
   #TerrainSpace{
     transition: 1s;
   scale: .7
 }
 
 }
-/* Au niveau le plus haut du code */
-
-/* Au niveau le plus haut du code */
-/* @media screen and (max-width: 1500px) {
-  .cardIndiv{
-    scale: .8;
-    transform: translateY(-100px);
-  }
-} */
 
 /* Control Every Element Card */
 #card1,

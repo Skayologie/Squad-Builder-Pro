@@ -72,19 +72,10 @@ let formationPositionNumber = {
         GK = 1
     ]
 }
+
 // AllInputs 
 
-let allDataInputs = {
-        Name : document.getElementById("name"),
-        ImageUrl : document.getElementById("imageUrl"),
-        Position : document.getElementById("Position"),
-        Nationality : document.getElementById("Nationality"),
-        NationalFlag : document.getElementById("NationalFlag"),
-        Club : document.getElementById("Club"),
-        LogoUrl : document.getElementById("LogoUrl"),
 
-        
-}
 
 let AllDataArraysOfEveryPlayer = []
 
@@ -100,6 +91,7 @@ let FormAddplayer = document.getElementById("FormAddplayer")
 
 for (const element of allCardsDispo) {
     element.addEventListener("mouseenter",()=>{
+        // console.log(element)
         let imgHovering = document.querySelector("#"+element.id + " .BadgeCover .hoverImg")
         imgHovering.classList.add("scale-[1.05]")
         imgHovering.classList.add("blur-[4px]")
@@ -116,10 +108,20 @@ for (const element of allCardsDispo) {
 for (const element of buttonsCard) {
     
     element.addEventListener("click",(e)=>{
+        idOfEle = e.target.offsetParent.id
+
+        
+
+
         document.getElementById("TheEmptyMessage").style.display = "none"
         FormAddplayer.classList.remove("hidden")
         let elementPosition = window.getComputedStyle(element.parentElement).gridTemplateAreas
         PositionSelect.value = elementPosition.replace(/['"]+/g, '')
+
+        console.log(PositionSelect.value)
+        console.log(idOfEle)
+
+
         if (PositionSelect.value === "GK") {
 
             for (const GKinput of GKInputs) {
@@ -141,8 +143,17 @@ for (const element of buttonsCard) {
         }
 
         AddButton.addEventListener("click" , ()=>{
-            let idOfEle = ""
-            idOfEle = e.target.offsetParent.id
+            let allDataInputs = {
+                Name : document.getElementById("name").value,
+                ImageUrl : document.getElementById("imageUrl").src,
+                Position : document.getElementById("Position"),
+                Nationality : document.getElementById("Nationality"),
+                NationalFlag : document.getElementById("NationalFlag"),
+                Club : document.getElementById("Club"),
+                LogoUrl : document.getElementById("LogoUrl")
+            }
+            // AllDataArraysOfEveryPlayer.push(allDataInputs)
+            console.log(allDataInputs.ImageUrl)
             document.getElementById(idOfEle).classList.add("scale-125")
             document.getElementById(idOfEle).innerHTML = `
                     <div class="BadgeCover">
