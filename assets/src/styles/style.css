@@ -161,4 +161,26 @@ input[type=number] {
   }
   
 
+  .custom-select {
+    width: 200px;
+    position: relative;
+  }
 
+  .custom-select select {
+    width: 100%;
+    height: 40px;
+    padding: 5px;
+    font-size: 16px;
+  }
+
+  .custom-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .custom-option img {
+    width: 20px;
+    height: 15px;
+    object-fit: cover;
+  }
