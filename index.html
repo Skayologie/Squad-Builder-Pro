@@ -7,13 +7,14 @@
     <link rel="stylesheet" href="./assets/src/styles/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tom-select@2.4.1/dist/css/tom-select.default.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+
     <title>Squad Builder Pro | EA FC 25 Tactics & Formations</title>
 </head>
 <body>
-<div class="absolute z-[-10]  w-[100%]">
+<div class="max-[1484px]:fixed absolute max-[1484px]:h-[100vh] z-[-10]  w-[100%]">
     <img class="w-[100%] h-[100%]" src="./assets/public/images/stadium_background.webp" alt="">
     <div class="w-[100%] h-[100%]  absolute top-0 bg-gradient-to-t from-[#202020] to-transparent">
-    
     </div>
 </div>
 <!-- Div For Shadow -->
@@ -24,7 +25,7 @@
 <div class="centerContainer  flex justify-center">
     <input type="hidden" class=" ">
     <div class="">
-        <main class="px-[50px] mt-16   grid grid-cols-9 max-[1484px]:grid-cols-9 ">
+        <main class="px-[50px] mt-16 grid grid-cols-9 max-[1484px]:grid-cols-9 ">
             <!-- Terrain Space -->
             <div id="TerrainSpace" class="max-[1484px]:transl translate-y-[-140px] max-[1484px]:col-span-full col-span-6 row-span-1 relative max-h-[1000px] min-h-[1000px] ">
                 <div class="ThePlace flex justify-center items-center">
@@ -32,9 +33,9 @@
                 </div>
                 <div id="formation"  class="formation-442" >
                     <!-- The Cards Player -->
-                    <div id="card1" class="cardIndiv absolute ">
-                        <button id="CardPlayer1">
-                            <div class="BadgeCover">
+                    <div id="card1" cardnumber=1 class="cardIndiv absolute ">
+                        <button  class="flex" id="CardPlayer1">
+                            <div class="BadgeCover CardParDefault">
                                 <span class="text-green-600 absolute left-[50%] cursor-pointer text-5xl translate-x-[-50%] top-[50%] translate-y-[-50%]">
                                     <svg class="" viewBox="0 0 36 42" fill="none" width="36"><path d="M18.6275 41.711L18.3137 41.0298C18.1146 41.1215 17.8854 41.1215 17.6863 41.0298L17.3726 41.711L17.6863 41.0298L1.18627 33.4311C0.920355 33.3087 0.75 33.0427 0.75 32.7499V8.7248C0.75 8.42506 0.928458 8.15411 1.20383 8.03575L17.7038 0.943648C17.8929 0.862375 18.1071 0.862375 18.2962 0.943648L34.7962 8.03575C35.0715 8.15411 35.25 8.42506 35.25 8.7248V32.7499C35.25 33.0427 35.0796 33.3087 34.8137 33.4311L18.3137 41.0298L18.6275 41.711Z" stroke="currentColor" stroke-width="1.5"></path></svg>
                                 </span>
@@ -42,14 +43,17 @@
                                 <img class="w-[140px]"  src="./assets/public/images/placeholder-card-normal.webp" alt="">
                                 <img class="hoverImg w-[140px] absolute top-0 z-[-2]  sepia-[100%] duration-[300ms] transition-all"  src="./assets/public/images/placeholder-card-normal.webp" alt="">
                                 <p style="filter:blur(20px); background: rgba(16, 16, 16, 0.7);border-radius: 50%;width: 60px; box-shadow: 0 0 0 0 rgb(0, 0, 0);transform: scale(1) translate(-50%, -50%);rotate: x 45deg;height: 40px;position: absolute;left: 50%;color: white;" class="bg-red-500 flex justify-center items-center z-[-2] font-bold"></p>    
-
+                            </div>
+                            <div class="hidden cardPlayerOfficiale">
+                                
                             </div>
                         </button>
                     </div>
-                    <div id="card2" class="cardIndiv absolute ">
+                    
+                    <div id="card2" cardnumber=2  class="cardIndiv absolute ">
                         <button  id="CardPlayer2">
                             
-                            <div class="BadgeCover">
+                            <div class="BadgeCover CardParDefault">
                                 <span class="text-green-600 absolute left-[50%] cursor-pointer text-5xl translate-x-[-50%] top-[50%] translate-y-[-50%]">
                                     <svg class="" viewBox="0 0 36 42" fill="none" width="36"><path d="M18.6275 41.711L18.3137 41.0298C18.1146 41.1215 17.8854 41.1215 17.6863 41.0298L17.3726 41.711L17.6863 41.0298L1.18627 33.4311C0.920355 33.3087 0.75 33.0427 0.75 32.7499V8.7248C0.75 8.42506 0.928458 8.15411 1.20383 8.03575L17.7038 0.943648C17.8929 0.862375 18.1071 0.862375 18.2962 0.943648L34.7962 8.03575C35.0715 8.15411 35.25 8.42506 35.25 8.7248V32.7499C35.25 33.0427 35.0796 33.3087 34.8137 33.4311L18.3137 41.0298L18.6275 41.711Z" stroke="currentColor" stroke-width="1.5"></path></svg>
                                 </span>
@@ -58,11 +62,14 @@
                                 <img class="hoverImg w-[140px] absolute top-0 z-[-2]  sepia-[100%] duration-[300ms] transition-all"  src="./assets/public/images/placeholder-card-normal.webp" alt="">
                                 <p style="filter:blur(20px); background: rgba(16, 16, 16, 0.7);border-radius: 50%;width: 60px; box-shadow: 0 0 0 0 rgb(0, 0, 0);transform: scale(1) translate(-50%, -50%);rotate: x 45deg;height: 40px;position: absolute;left: 50%;color: white;" class="bg-red-500 flex justify-center items-center z-[-2] font-bold"></p>
                             </div>
+                            <div class="hidden cardPlayerOfficiale">
+                                
+                            </div>
                         </button>
                     </div>
-                    <div id="card3" class="cardIndiv absolute">
+                    <div id="card3" cardnumber=3  class="cardIndiv absolute">
                         <button id="CardPlayer3">
-                            <div class="BadgeCover">
+                            <div class="BadgeCover CardParDefault">
                                 <span class="text-green-600 absolute left-[50%] cursor-pointer text-5xl translate-x-[-50%] top-[50%] translate-y-[-50%]">
                                     <svg class="" viewBox="0 0 36 42" fill="none" width="36"><path d="M18.6275 41.711L18.3137 41.0298C18.1146 41.1215 17.8854 41.1215 17.6863 41.0298L17.3726 41.711L17.6863 41.0298L1.18627 33.4311C0.920355 33.3087 0.75 33.0427 0.75 32.7499V8.7248C0.75 8.42506 0.928458 8.15411 1.20383 8.03575L17.7038 0.943648C17.8929 0.862375 18.1071 0.862375 18.2962 0.943648L34.7962 8.03575C35.0715 8.15411 35.25 8.42506 35.25 8.7248V32.7499C35.25 33.0427 35.0796 33.3087 34.8137 33.4311L18.3137 41.0298L18.6275 41.711Z" stroke="currentColor" stroke-width="1.5"></path></svg>
                                 </span>
@@ -71,11 +78,14 @@
                                 <img class="hoverImg w-[140px] absolute top-0 z-[-2]  sepia-[100%] duration-[300ms] transition-all"  src="./assets/public/images/placeholder-card-normal.webp" alt="">
                                 <p style="filter:blur(20px); background: rgba(16, 16, 16, 0.7);border-radius: 50%;width: 60px; box-shadow: 0 0 0 0 rgb(0, 0, 0);transform: scale(1) translate(-50%, -50%);rotate: x 45deg;height: 40px;position: absolute;left: 50%;color: white;" class="bg-red-500 flex justify-center items-center z-[-2] font-bold"></p>    
                             </div>
+                            <div class="hidden cardPlayerOfficiale">
+                                
+                            </div>
                         </button>
                     </div>
-                    <div id="card4" class="cardIndiv absolute">
+                    <div id="card4" cardnumber=4  class="cardIndiv absolute">
                         <button id="CardPlayer4 ">
-                            <div class="BadgeCover">
+                            <div class="BadgeCover CardParDefault">
                                 <span class="text-green-600 absolute left-[50%] cursor-pointer text-5xl translate-x-[-50%] top-[50%] translate-y-[-50%]">
                                     <svg class="" viewBox="0 0 36 42" fill="none" width="36"><path d="M18.6275 41.711L18.3137 41.0298C18.1146 41.1215 17.8854 41.1215 17.6863 41.0298L17.3726 41.711L17.6863 41.0298L1.18627 33.4311C0.920355 33.3087 0.75 33.0427 0.75 32.7499V8.7248C0.75 8.42506 0.928458 8.15411 1.20383 8.03575L17.7038 0.943648C17.8929 0.862375 18.1071 0.862375 18.2962 0.943648L34.7962 8.03575C35.0715 8.15411 35.25 8.42506 35.25 8.7248V32.7499C35.25 33.0427 35.0796 33.3087 34.8137 33.4311L18.3137 41.0298L18.6275 41.711Z" stroke="currentColor" stroke-width="1.5"></path></svg>
                                 </span>
@@ -84,11 +94,14 @@
                                 <img class="hoverImg w-[140px] absolute top-0 z-[-2]  sepia-[100%] duration-[300ms] transition-all"  src="./assets/public/images/placeholder-card-normal.webp" alt="">
                                 <p style="filter:blur(20px); background: rgba(16, 16, 16, 0.7);border-radius: 50%;width: 60px; box-shadow: 0 0 0 0 rgb(0, 0, 0);transform: scale(1) translate(-50%, -50%);rotate: x 45deg;height: 40px;position: absolute;left: 50%;color: white;" class="bg-red-500 flex justify-center items-center z-[-2] font-bold"></p>
                             </div>
+                            <div class="hidden cardPlayerOfficiale">
+                                
+                            </div>
                         </button>
                     </div>
-                    <div id="card5" class="cardIndiv  flex justify-center items-center absolute">
+                    <div id="card5" cardnumber=5  class="cardIndiv  flex justify-center items-center absolute">
                         <button id="CardPlayer5 ">
-                            <div class="BadgeCover">
+                            <div class="BadgeCover CardParDefault">
                                 <span class="text-green-600 absolute left-[50%] cursor-pointer text-5xl translate-x-[-50%] top-[50%] translate-y-[-50%]">
                                     <svg class="" viewBox="0 0 36 42" fill="none" width="36"><path d="M18.6275 41.711L18.3137 41.0298C18.1146 41.1215 17.8854 41.1215 17.6863 41.0298L17.3726 41.711L17.6863 41.0298L1.18627 33.4311C0.920355 33.3087 0.75 33.0427 0.75 32.7499V8.7248C0.75 8.42506 0.928458 8.15411 1.20383 8.03575L17.7038 0.943648C17.8929 0.862375 18.1071 0.862375 18.2962 0.943648L34.7962 8.03575C35.0715 8.15411 35.25 8.42506 35.25 8.7248V32.7499C35.25 33.0427 35.0796 33.3087 34.8137 33.4311L18.3137 41.0298L18.6275 41.711Z" stroke="currentColor" stroke-width="1.5"></path></svg>
                                 </span>
@@ -98,11 +111,14 @@
                                 <p style="filter:blur(20px); background: rgba(16, 16, 16, 0.7);border-radius: 50%;width: 60px; box-shadow: 0 0 0 0 rgb(0, 0, 0);transform: scale(1) translate(-50%, -50%);rotate: x 45deg;height: 40px;position: absolute;left: 50%;color: white;" class="bg-red-500 flex justify-center items-center z-[-2] font-bold"></p>
 
                             </div>
+                            <div class="hidden cardPlayerOfficiale">
+                                
+                            </div>
                         </button>
                     </div>
-                    <div id="card6" class="cardIndiv absolute">
+                    <div id="card6" cardnumber=6  class="cardIndiv absolute">
                         <button id="CardPlayer6">
-                            <div class="BadgeCover">
+                            <div class="BadgeCover CardParDefault">
                                 <span class="text-green-600 absolute left-[50%] cursor-pointer text-5xl translate-x-[-50%] top-[50%] translate-y-[-50%]">
                                     <svg class="" viewBox="0 0 36 42" fill="none" width="36"><path d="M18.6275 41.711L18.3137 41.0298C18.1146 41.1215 17.8854 41.1215 17.6863 41.0298L17.3726 41.711L17.6863 41.0298L1.18627 33.4311C0.920355 33.3087 0.75 33.0427 0.75 32.7499V8.7248C0.75 8.42506 0.928458 8.15411 1.20383 8.03575L17.7038 0.943648C17.8929 0.862375 18.1071 0.862375 18.2962 0.943648L34.7962 8.03575C35.0715 8.15411 35.25 8.42506 35.25 8.7248V32.7499C35.25 33.0427 35.0796 33.3087 34.8137 33.4311L18.3137 41.0298L18.6275 41.711Z" stroke="currentColor" stroke-width="1.5"></path></svg>
                                 </span>
@@ -112,11 +128,14 @@
                                 <p style="filter:blur(20px); background: rgba(16, 16, 16, 0.7);border-radius: 50%;width: 60px; box-shadow: 0 0 0 0 rgb(0, 0, 0);transform: scale(1) translate(-50%, -50%);rotate: x 45deg;height: 40px;position: absolute;left: 50%;color: white;" class="bg-red-500 flex justify-center items-center z-[-2] font-bold"></p>
 
                             </div>
+                            <div class="hidden cardPlayerOfficiale">
+                                
+                            </div>
                         </button>
                     </div>
-                    <div id="card7" class="cardIndiv absolute">
+                    <div id="card7" cardnumber=7  class="cardIndiv absolute">
                         <button id="CardPlayer7">
-                            <div class="BadgeCover">
+                            <div class="BadgeCover CardParDefault">
                                 <span class="text-green-600 absolute left-[50%] cursor-pointer text-5xl translate-x-[-50%] top-[50%] translate-y-[-50%]">
                                     <svg class="" viewBox="0 0 36 42" fill="none" width="36"><path d="M18.6275 41.711L18.3137 41.0298C18.1146 41.1215 17.8854 41.1215 17.6863 41.0298L17.3726 41.711L17.6863 41.0298L1.18627 33.4311C0.920355 33.3087 0.75 33.0427 0.75 32.7499V8.7248C0.75 8.42506 0.928458 8.15411 1.20383 8.03575L17.7038 0.943648C17.8929 0.862375 18.1071 0.862375 18.2962 0.943648L34.7962 8.03575C35.0715 8.15411 35.25 8.42506 35.25 8.7248V32.7499C35.25 33.0427 35.0796 33.3087 34.8137 33.4311L18.3137 41.0298L18.6275 41.711Z" stroke="currentColor" stroke-width="1.5"></path></svg>
                                 </span>
@@ -126,11 +145,14 @@
                                 <p style="filter:blur(20px); background: rgba(16, 16, 16, 0.7);border-radius: 50%;width: 60px; box-shadow: 0 0 0 0 rgb(0, 0, 0);transform: scale(1) translate(-50%, -50%);rotate: x 45deg;height: 40px;position: absolute;left: 50%;color: white;" class="bg-red-500 flex justify-center items-center z-[-2] font-bold"></p>
 
                             </div>
+                            <div class="hidden cardPlayerOfficiale">
+                                
+                            </div>
                         </button>
                     </div>
-                    <div id="card8" class="cardIndiv absolute">
+                    <div id="card8" cardnumber=8  class="cardIndiv absolute">
                         <button id="CardPlayer8">
-                            <div class="BadgeCover">
+                            <div class="BadgeCover CardParDefault">
                                 <span class="text-green-600 absolute left-[50%] cursor-pointer text-5xl translate-x-[-50%] top-[50%] translate-y-[-50%]">
                                     <svg class="" viewBox="0 0 36 42" fill="none" width="36"><path d="M18.6275 41.711L18.3137 41.0298C18.1146 41.1215 17.8854 41.1215 17.6863 41.0298L17.3726 41.711L17.6863 41.0298L1.18627 33.4311C0.920355 33.3087 0.75 33.0427 0.75 32.7499V8.7248C0.75 8.42506 0.928458 8.15411 1.20383 8.03575L17.7038 0.943648C17.8929 0.862375 18.1071 0.862375 18.2962 0.943648L34.7962 8.03575C35.0715 8.15411 35.25 8.42506 35.25 8.7248V32.7499C35.25 33.0427 35.0796 33.3087 34.8137 33.4311L18.3137 41.0298L18.6275 41.711Z" stroke="currentColor" stroke-width="1.5"></path></svg>
                                 </span>
@@ -140,12 +162,15 @@
                                 <p style="filter:blur(20px); background: rgba(16, 16, 16, 0.7);border-radius: 50%;width: 60px; box-shadow: 0 0 0 0 rgb(0, 0, 0);transform: scale(1) translate(-50%, -50%);rotate: x 45deg;height: 40px;position: absolute;left: 50%;color: white;" class="bg-red-500 flex justify-center items-center z-[-2] font-bold"></p>
 
                             </div>
+                            <div class="hidden cardPlayerOfficiale">
+                                
+                            </div>
                         </button>
                     </div>
                     
-                    <div id="card9" class="cardIndiv absolute">
+                    <div id="card9" cardnumber=9  class="cardIndiv absolute">
                         <button id="CardPlayer9">
-                            <div class="BadgeCover">
+                            <div class="BadgeCover CardParDefault">
                                 <span class="text-green-600 absolute left-[50%] cursor-pointer text-5xl translate-x-[-50%] top-[50%] translate-y-[-50%]">
                                     <svg class="" viewBox="0 0 36 42" fill="none" width="36"><path d="M18.6275 41.711L18.3137 41.0298C18.1146 41.1215 17.8854 41.1215 17.6863 41.0298L17.3726 41.711L17.6863 41.0298L1.18627 33.4311C0.920355 33.3087 0.75 33.0427 0.75 32.7499V8.7248C0.75 8.42506 0.928458 8.15411 1.20383 8.03575L17.7038 0.943648C17.8929 0.862375 18.1071 0.862375 18.2962 0.943648L34.7962 8.03575C35.0715 8.15411 35.25 8.42506 35.25 8.7248V32.7499C35.25 33.0427 35.0796 33.3087 34.8137 33.4311L18.3137 41.0298L18.6275 41.711Z" stroke="currentColor" stroke-width="1.5"></path></svg>
                                 </span>
@@ -155,11 +180,14 @@
                                 <p style="filter:blur(20px); background: rgba(16, 16, 16, 0.7);border-radius: 50%;width: 60px; box-shadow: 0 0 0 0 rgb(0, 0, 0);transform: scale(1) translate(-50%, -50%);rotate: x 45deg;height: 40px;position: absolute;left: 50%;color: white;" class="bg-red-500 flex justify-center items-center z-[-2] font-bold"></p>
 
                             </div>
+                            <div class="hidden cardPlayerOfficiale">
+                                
+                            </div>
                         </button>
                     </div>
-                    <div id="card10" class="cardIndiv absolute">
+                    <div id="card10" cardnumber=10  class="cardIndiv absolute">
                         <button id="CardPlayer10">
-                            <div class="BadgeCover">
+                            <div class="BadgeCover CardParDefault">
                                 <span class="text-green-600 absolute left-[50%] cursor-pointer text-5xl translate-x-[-50%] top-[50%] translate-y-[-50%]">
                                     <svg class="" viewBox="0 0 36 42" fill="none" width="36"><path d="M18.6275 41.711L18.3137 41.0298C18.1146 41.1215 17.8854 41.1215 17.6863 41.0298L17.3726 41.711L17.6863 41.0298L1.18627 33.4311C0.920355 33.3087 0.75 33.0427 0.75 32.7499V8.7248C0.75 8.42506 0.928458 8.15411 1.20383 8.03575L17.7038 0.943648C17.8929 0.862375 18.1071 0.862375 18.2962 0.943648L34.7962 8.03575C35.0715 8.15411 35.25 8.42506 35.25 8.7248V32.7499C35.25 33.0427 35.0796 33.3087 34.8137 33.4311L18.3137 41.0298L18.6275 41.711Z" stroke="currentColor" stroke-width="1.5"></path></svg>
                                 </span>
@@ -168,14 +196,17 @@
                                 <img class="hoverImg w-[140px] absolute top-0 z-[-2]  sepia-[100%] duration-[300ms] transition-all"  src="./assets/public/images/placeholder-card-normal.webp" alt="">
                                 <p style="filter:blur(20px); background: rgba(16, 16, 16, 0.7);border-radius: 50%;width: 60px; box-shadow: 0 0 0 0 rgb(0, 0, 0);transform: scale(1) translate(-50%, -50%);rotate: x 45deg;height: 40px;position: absolute;left: 50%;color: white;" class="bg-red-500 flex justify-center items-center z-[-2] font-bold"></p>
 
+                            </div>
+                            <div class="hidden cardPlayerOfficiale">
+                                
                             </div>
                         </button>
                     </div>
                     
-                    <div id="card11" class="cardIndiv absolute">
+                    <div id="card11" cardnumber=11 class="cardIndiv absolute">
                         
                         <button id="CardPlayer11">
-                            <div class="BadgeCover">
+                            <div class="BadgeCover CardParDefault">
                                 <span class="text-green-600 absolute left-[50%] cursor-pointer text-5xl translate-x-[-50%] top-[50%] translate-y-[-50%]">
                                     <svg class="" viewBox="0 0 36 42" fill="none" width="36"><path d="M18.6275 41.711L18.3137 41.0298C18.1146 41.1215 17.8854 41.1215 17.6863 41.0298L17.3726 41.711L17.6863 41.0298L1.18627 33.4311C0.920355 33.3087 0.75 33.0427 0.75 32.7499V8.7248C0.75 8.42506 0.928458 8.15411 1.20383 8.03575L17.7038 0.943648C17.8929 0.862375 18.1071 0.862375 18.2962 0.943648L34.7962 8.03575C35.0715 8.15411 35.25 8.42506 35.25 8.7248V32.7499C35.25 33.0427 35.0796 33.3087 34.8137 33.4311L18.3137 41.0298L18.6275 41.711Z" stroke="currentColor" stroke-width="1.5"></path></svg>
                                 </span>
@@ -184,6 +215,9 @@
                                 <img class="hoverImg w-[140px] absolute top-0 z-[-2]  sepia-[100%] duration-[300ms] transition-all"  src="./assets/public/images/placeholder-card-normal.webp" alt="">
                                 <p style="filter:blur(20px); background: rgba(16, 16, 16, 0.7);border-radius: 50%;width: 60px; box-shadow: 0 0 0 0 rgb(0, 0, 0);transform: scale(1) translate(-50%, -50%);rotate: x 45deg;height: 40px;position: absolute;left: 50%;color: white;" class="bg-red-500 flex justify-center items-center z-[-2] font-bold"></p>
 
+                            </div>
+                            <div class="hidden cardPlayerOfficiale">
+                                
                             </div>
                         </button>
                     </div>
@@ -311,7 +345,7 @@
                             <i class="fa-solid fa-xmark"></i>
                         </div>
                     </div>
-                    <div class="cardIndiv absolute flex  flex-wrap bg-red-800 w-[100%]" id="SectionOfChangment">
+                    <div class="cardIndiv absolute flex max-h-[500px] bg-red-700x flex-wrap  w-[100%] justify-center overflow-y-scroll" id="SectionOfChangment">
                         <!-- <div class="relative">
                             <button>
                                 
@@ -385,7 +419,7 @@
 
 
 
-            <div class="max-[1484px]:col-span-full max-[1484px]:mb-[100px]  col-span-3 row-span-1 h-max w-[100%] bg-[#202020] rounded-[8px] max-[1484px]:order-[-1] ">
+            <div class="min-[1484px]:sticky  min-[1484px]:h-[90vh] min-[1484px]:overflow-y-scroll min-[1484px]:top-[40px] max-[1484px]:col-span-full max-[1484px]:mb-[100px]  col-span-3 row-span-1 w-[100%] bg-[#202020] rounded-[8px] max-[1484px]:order-[-1] ">
                 <!-- Select Option For Tactice -->
                 <div class="p-[10px] ">
                     <select class="cursor-pointer w-[100%] h-[40px] p-[10px] bg-[#404040] text-white rounded-[4px]" name="" id="SelectFormation">
@@ -399,22 +433,21 @@
                     <div id="TheEmptyMessage" class="h-[40px] flex items-center p-[10px] m-[10px] bg-[#404040] text-white rounded-[4px]">
                         <p>To Add Player Click On The Empty Card </p>
                     </div>
-                    <div id="FormAddplayer" class="hidden flex flex-col gap-5 p-[10px] ">
+                    <div id="FormAddplayer" class=" flex flex-col gap-5 p-[10px] ">
 
                         <div class="flex gap-1 flex-col col-span-1">
                             <label class="text-white font-bold text-xl" for="">Name</label>
                             <input class="w-[100%] h-[40px] p-[10px] bg-[#404040] text-white rounded-[4px] border border-white/50 " name="" id="name" />
                         </div>
                         <!-- Inputs flexible -->
-                        <div class="grid grid-cols-12 gap-6">
-                            <div class="flex gap-1 flex-col col-span-5">
-                                <label class="text-white font-bold text-xl" for="">Photo URL</label>
-                                <input class="w-[100%] h-[40px] p-[10px] bg-[#404040] text-white rounded-[4px] border border-white/50 " name="" id="imageUrl" />
-                            </div>
-                            <div class="col-span-2  text-white flex justify-center items-center h-[40px] self-end">
-                                ou
-                            </div>
-                            <div class="flex gap-1 flex-col col-span-5">
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="flex gap-1 flex-col col-span-1">
+                                <label class="text-white font-bold text-xl" for="">Cover</label>
+                                <!-- <input class="w-[100%] h-[40px] p-[10px] bg-[#404040] text-white rounded-[4px] border border-white/50 "  name="" id="Nationality" /> -->
+                                <select id="Cover"  placeholder="Select a Cover..."  ></select>
+                             </div>
+                            
+                            <div class="flex gap-1 flex-col col-span-1 ">
                                 <label class="text-white font-bold text-xl" for="">Photo Upload</label>
                                 <input class="w-[100%] h-[40px] p-[10px] bg-[#404040] text-white rounded-[4px] border border-white/50 " accept="image/png" type="file" name="" id="image" />
                             </div>
@@ -471,75 +504,117 @@
                          <div class="NormalPlayer grid grid-cols-2 gap-6">
                             <div class=" flex gap-1 flex-col col-span-1">
                                 <label class="text-white font-bold text-xl" for="">Rating</label>
-                                <input class="w-[100%] h-[40px] p-[10px] bg-[#404040] text-white rounded-[4px] border border-white/50 " name="" id="NormalPlayerRating" />
+                                <div class="RangInput flex ">
+                                    <input max="99" min="20" value="50" type="range" class="w-[100%] h-[40px] p-[10px] bg-[#404040] text-white rounded-[4px] border border-white/50 " name="" id="NormalPlayerRating" />
+                                    <p  class=" font-bold text-white flex items-center text-2xl px-5">88</p>
+                                </div>
                             </div>
                             <div class="flex gap-1 flex-col col-span-1">
                                 <label class="text-white font-bold text-xl" for="">Pace</label>
-                                <input class="w-[100%] h-[40px] p-[10px] bg-[#404040] text-white rounded-[4px] border border-white/50 " type="number" name="" id="NormalPlayerPace" />
+                                <div class="RangInput flex">
+                                    <input max="99" min="20" value="50" type="range" class="w-[100%] h-[40px] p-[10px] bg-[#404040] text-white rounded-[4px] border border-white/50 " name="" id="NormalPlayerPace" />
+                                    <p  class=" font-bold text-white flex items-center text-2xl px-5">88</p>
+                                </div>
                             </div>
                          </div>
                          <!-- Inputs flexible -->
                          <div class="NormalPlayer grid grid-cols-2 gap-6">
                             <div class="flex gap-1 flex-col col-span-1">
                                 <label class="text-white font-bold text-xl" for="">Shooting</label>
-                                <input class="w-[100%] h-[40px] p-[10px] bg-[#404040] text-white rounded-[4px] border border-white/50 " type="number" name="" id="NormalPlayerShooting"  />
+                                <div class="RangInput flex">
+                                    <input max="99" min="20" value="50" type="range" class="w-[100%] h-[40px] p-[10px] bg-[#404040] text-white rounded-[4px] border border-white/50 " name="" id="NormalPlayerShooting" />
+                                    <p  class=" font-bold text-white flex items-center text-2xl px-5">88</p>
+                                </div>
                             </div>
                             <div class="flex gap-1 flex-col col-span-1">
                                 <label class="text-white font-bold text-xl" for="">Passing</label>
-                                <input class="w-[100%] h-[40px] p-[10px] bg-[#404040] text-white rounded-[4px] border border-white/50 " type="number" name="" id="NormalPlayerPassing" />
+                                <div class="RangInput flex">
+                                    <input max="99" min="20" value="50" type="range" class="w-[100%] h-[40px] p-[10px] bg-[#404040] text-white rounded-[4px] border border-white/50 " name="" id="NormalPlayerPassing" />
+                                    <p  class=" font-bold text-white flex items-center text-2xl px-5">88</p>
+                                </div>
                             </div>
                          </div>
                          <!-- Inputs flexible -->
                          <div class="NormalPlayer grid grid-cols-2 gap-6">
                             <div class="flex gap-1 flex-col col-span-1">
                                 <label class="text-white font-bold text-xl" for="">Dribbling</label>
-                                <input class="w-[100%] h-[40px] p-[10px] bg-[#404040] text-white rounded-[4px] border border-white/50 " type="number" name="" id="NormalPlayerDribbling" />
+                                <div class="RangInput flex">
+                                    <input max="99" min="20" value="50" type="range" class="w-[100%] h-[40px] p-[10px] bg-[#404040] text-white rounded-[4px] border border-white/50 " name="" id="NormalPlayerDribbling" />
+                                    <p  class=" font-bold text-white flex items-center text-2xl px-5">88</p>
+                                </div>
                             </div>
                             <div class="flex gap-1 flex-col col-span-1">
                                 <label class="text-white font-bold text-xl" for="">Defending</label>
-                                <input class="w-[100%] h-[40px] p-[10px] bg-[#404040] text-white rounded-[4px] border border-white/50 " type="number" name="" id="NormalPlayerDefending" />
+                                <div class="RangInput flex">
+                                    <input max="99" min="20" value="50" type="range" class="w-[100%] h-[40px] p-[10px] bg-[#404040] text-white rounded-[4px] border border-white/50 " name="" id="NormalPlayerDefending" />
+                                    <p  class=" font-bold text-white flex items-center text-2xl px-5">88</p>
+                                </div>
                             </div>
                          </div>
                         <div class="NormalPlayer flex gap-1 flex-col col-span-1">
                             <label class="text-white font-bold text-xl" for="">physical</label>
-                            <input class="w-[100%] h-[40px] p-[10px] bg-[#404040] text-white rounded-[4px] border border-white/50 " type="number" name="" id="NormalPlayerPhysical" />
+                            <div class="RangInput flex">
+                                <input max="99" min="20" value="50" type="range" class="w-[100%] h-[40px] p-[10px] bg-[#404040] text-white rounded-[4px] border border-white/50 " name="" id="NormalPlayerPhysical" />
+                                <p  class=" font-bold text-white flex items-center text-2xl px-5">88</p>
+                            </div>
                         </div>
 
                         <!-- Inputs For GK -->
                         <div class="GK hidden flex gap-1 flex-col col-span-1">
                             <label class="text-white font-bold text-xl" for="">Rating</label>
-                            <input class="w-[100%] h-[40px] p-[10px] bg-[#404040] text-white rounded-[4px] border border-white/50 " type="number" name="" id="GKRating" />
+                            <div class="RangInput flex">
+                                <input max="99" min="20" value="50" type="range" class="w-[100%] h-[40px] p-[10px] bg-[#404040] text-white rounded-[4px] border border-white/50 " name="" id="GKRating" />
+                                <p  class=" font-bold text-white flex items-center text-2xl px-5">88</p>
+                            </div>
                         </div>
                         <div class="GK hidden grid grid-cols-2 gap-6">
                             <div class="flex gap-1 flex-col col-span-1">
                                 <label class="text-white font-bold text-xl" for="">Diving</label>
-                                <input class="w-[100%] h-[40px] p-[10px] bg-[#404040] text-white rounded-[4px] border border-white/50 " name="" id="GKDiving" />
+                                <div class="RangInput flex">
+                                    <input max="99" min="20" value="50" type="range" class="w-[100%] h-[40px] p-[10px] bg-[#404040] text-white rounded-[4px] border border-white/50 " name="" id="GKDiving" />
+                                    <p  class=" font-bold text-white flex items-center text-2xl px-5">88</p>
+                                </div>
                             </div>
                             <div class="flex gap-1 flex-col col-span-1">
                                 <label class="text-white font-bold text-xl" for="">Handling</label>
-                                <input class="w-[100%] h-[40px] p-[10px] bg-[#404040] text-white rounded-[4px] border border-white/50 " type="number" name="" id="GKHandling" />
+                                <div class="RangInput flex">
+                                    <input max="99" min="20" value="50" type="range" class="w-[100%] h-[40px] p-[10px] bg-[#404040] text-white rounded-[4px] border border-white/50 " name="" id="GKHandling" />
+                                    <p  class=" font-bold text-white flex items-center text-2xl px-5">88</p>
+                                </div>
                             </div>
                          </div>
                          <!-- Inputs flexible -->
                          <div class="GK hidden grid grid-cols-2 gap-6">
                             <div class="flex gap-1 flex-col col-span-1">
                                 <label class="text-white font-bold text-xl" for="">Kicking</label>
-                                <input class="w-[100%] h-[40px] p-[10px] bg-[#404040] text-white rounded-[4px] border border-white/50 " type="number" name="" id="GKKicking" />
+                                <div class="RangInput flex">
+                                    <input max="99" min="20" value="50" type="range" class="w-[100%] h-[40px] p-[10px] bg-[#404040] text-white rounded-[4px] border border-white/50 " name="" id="GKKicking" />
+                                    <p  class=" font-bold text-white flex items-center text-2xl px-5">88</p>
+                                </div>
                             </div>
                             <div class="flex gap-1 flex-col col-span-1">
                                 <label class="text-white font-bold text-xl" for="">Reflexes</label>
-                                <input class="w-[100%] h-[40px] p-[10px] bg-[#404040] text-white rounded-[4px] border border-white/50 " type="number" name="" id="GKReflexes" />
+                                <div class="RangInput flex">
+                                    <input max="99" min="20" value="50" type="range" class="w-[100%] h-[40px] p-[10px] bg-[#404040] text-white rounded-[4px] border border-white/50 " name="" id="GKReflexes" />
+                                    <p  class=" font-bold text-white flex items-center text-2xl px-5">88</p>
+                                </div>
                             </div>
                          </div>
                          <!-- Inputs flexible -->
                          <div class="GK hidden grid grid-cols-2 gap-6">
                             <div class="flex gap-1 flex-col col-span-1">
                                 <label class="text-white font-bold text-xl" for="">Speed</label>
-                                <input class="w-[100%] h-[40px] p-[10px] bg-[#404040] text-white rounded-[4px] border border-white/50 " type="number" name="" id="GKSpeed" />
+                                <div class="RangInput flex">
+                                    <input max="99" min="20" value="50" type="range" class="w-[100%] h-[40px] p-[10px] bg-[#404040] text-white rounded-[4px] border border-white/50 " name="" id="GKSpeed" />
+                                    <p  class=" font-bold text-white flex items-center text-2xl px-5">88</p>
+                                </div>
                             </div>
                             <div class="flex gap-1 flex-col col-span-1">
                                 <label class="text-white font-bold text-xl" for="">Positioning</label>
-                                <input class="w-[100%] h-[40px] p-[10px] bg-[#404040] text-white rounded-[4px] border border-white/50 " type="number" name="" id="GKPositioning" />
+                                <div class="RangInput flex">
+                                    <input max="99" min="20" value="50" type="range" class="w-[100%] h-[40px] p-[10px] bg-[#404040] text-white rounded-[4px] border border-white/50 " name="" id="GKPositioning" />
+                                    <p  class=" font-bold text-white flex items-center text-2xl px-5">88</p>
+                                </div>
                             </div>
                          </div>
                         
@@ -616,7 +691,7 @@
                                </div>
                            </div>
                        </div>
-        </button>
+       </button>
                     </div> -->
                     
                  <!-- </div> -->
@@ -625,14 +700,229 @@
         </main>
     </div>
 </div>
+<!-- 
+<ul  class="cardIndiv absolute flex  flex-wrap bg-red-800 w-[100%]" style="color:white;" id="items">
+    <li>
+            <div class="relative scale-125">
+                <button>
+                    <div style="z-index:20;" class="ModifSuppChang text-white absolute bg-[black] p-3 rounded-[5px] flex flex-col gap-6 right-0 translate-x-[40%] float-right">
+                <div class="Supp">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+                <div class="Modif">
+                    <i class="fa-solid fa-pen"></i>
+                </div>
+                <div onclick="ChangeThePlayer()" class="Changement">
+                    <i class="fas fa-exchange"></i>
+                </div>
+            </div>
+            <div class="BadgeCover">
+                <img class="w-[140px]" style=" height:100%;" src="./assets/public/images/badge_ballon_dor.webp" alt="">
+            </div>    
+            <div class="flex justify-center w-[-webkit-fill-available] informationsBadges absolute top-0 right-0">
+                <div class="image relative top-8 flex justify-center self-center w-[100%]  ">
+                    <img class="w-[75%] " src="${ImageUrl.value}" alt="">
+                </div>
+            </div>   
+            <div class=" Info absolute top-0 w-[100%] flex flex-col text-[#ffd972]  h-[100%]">
+                <div class="absolute top-[3.5rem] left-7  text-4xl font-bold">
+                    <p>95</p>
+                    <p class="text-xl mt-[-5px]  text-center">1</p>
+                </div>
+                <p class=" font-bold text-[15px] text-center absolute w-[100%] top-[9.8rem]">${Name.value}</p>
+                <div class="criticalCard flex absolute w-[100%] left-0 bottom-[2.8rem] text-[8px] text-[#ffd972] justify-center gap-1 ">
+                    <div class="flex flex-col items-center">
+                        <p>Pac</p>
+                        <p class="font-semibold">88</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <p>Sho</p>
+                        <p class="font-semibold">88</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <p>Pas</p>
+                        <p class="font-semibold">88</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <p>Dri</p>
+                        <p class="font-semibold">88</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <p>Def</p>
+                        <p class="font-semibold">88</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <p>Phy</p>
+                        <p class="font-semibold">88</p>
+                    </div>
+                </div>
+                <div class=" flags flex h-[10px] gap-3 my-1 justify-center absolute right-0 left-0 bottom-7">
+                    <div class="country flex items-center">
+                        <img class="h-[80%]" src="https://cdn.sofifa.net/flags/ar.png" alt="">
+                    </div>
+                    <div class="club">
+                        <img class="h-[100%]" src="https://cdn.sofifa.net/meta/team/239235/120.png" alt="">
+                    </div>
+                </div>
+            </div>
+</button>
+            </div>
+            
+            
+            
+    </li>
+    <li>
+        
+        <div class="relative">
+            <button>
+                <div style="z-index:20;" class="ModifSuppChang text-white absolute bg-[black] p-3 rounded-[5px] flex flex-col gap-6 right-0 translate-x-[40%] float-right">
+                <div class="Supp">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+                <div class="Modif">
+                    <i class="fa-solid fa-pen"></i>
+                </div>
+                <div onclick="ChangeThePlayer()" class="Changement">
+                    <i class="fas fa-exchange"></i>
+                </div>
+            </div>
+            <div class="BadgeCover">
+                <img class="w-[140px]" style=" height:100%;" src="./assets/public/images/badge_ballon_dor.webp" alt="">
+            </div>    
+            <div class="flex justify-center w-[-webkit-fill-available] informationsBadges absolute top-0 right-0">
+                <div class="image relative top-8 flex justify-center self-center w-[100%]  ">
+                    <img class="w-[75%] " src="${ImageUrl.value}" alt="">
+                </div>
+            </div>   
+            <div class=" Info absolute top-0 w-[100%] flex flex-col text-[#ffd972]  h-[100%]">
+                <div class="absolute top-[3.5rem] left-7  text-4xl font-bold">
+                    <p>95</p>
+                    <p class="text-xl mt-[-5px]  text-center">2</p>
+                </div>
+                <p class=" font-bold text-[15px] text-center absolute w-[100%] top-[9.8rem]">${Name.value}</p>
+                <div class="criticalCard flex absolute w-[100%] left-0 bottom-[2.8rem] text-[8px] text-[#ffd972] justify-center gap-1 ">
+                    <div class="flex flex-col items-center">
+                        <p>Pac</p>
+                        <p class="font-semibold">88</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <p>Sho</p>
+                        <p class="font-semibold">88</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <p>Pas</p>
+                        <p class="font-semibold">88</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <p>Dri</p>
+                        <p class="font-semibold">88</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <p>Def</p>
+                        <p class="font-semibold">88</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <p>Phy</p>
+                        <p class="font-semibold">88</p>
+                    </div>
+                </div>
+                <div class=" flags flex h-[10px] gap-3 my-1 justify-center absolute right-0 left-0 bottom-7">
+                    <div class="country flex items-center">
+                        <img class="h-[80%]" src="https://cdn.sofifa.net/flags/ar.png" alt="">
+                    </div>
+                    <div class="club">
+                        <img class="h-[100%]" src="https://cdn.sofifa.net/meta/team/239235/120.png" alt="">
+                    </div>
+                </div>
+            </div>
+            </button>
+        </div>
+    </li>
+
+    <li data-tilt >
+        <div class="relative">
+            <button>
+                <div style="z-index:20;" class="ModifSuppChang text-white absolute bg-[black] p-3 rounded-[5px] flex flex-col gap-6 right-0 translate-x-[40%] float-right">
+                <div class="Supp">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+                <div class="Modif">
+                    <i class="fa-solid fa-pen"></i>
+                </div>
+                <div onclick="ChangeThePlayer()" class="Changement">
+                    <i class="fas fa-exchange"></i>
+                </div>
+            </div>
+            <div class="BadgeCover">
+                <img class="w-[140px]" style=" height:100%;" src="./assets/public/images/badge_ballon_dor.webp" alt="">
+            </div>    
+            <div class="flex justify-center w-[-webkit-fill-available] informationsBadges absolute top-0 right-0">
+                <div class="image relative top-8 flex justify-center self-center w-[100%]  ">
+                    <img class="w-[75%] " src="${ImageUrl.value}" alt="">
+                </div>
+            </div>   
+            <div class=" Info absolute top-0 w-[100%] flex flex-col text-[#ffd972]  h-[100%]">
+                <div class="absolute top-[3.5rem] left-7  text-4xl font-bold">
+                    <p>95</p>
+                    <p class="text-xl mt-[-5px]  text-center">3</p>
+                </div>
+                <p class=" font-bold text-[15px] text-center absolute w-[100%] top-[9.8rem]">${Name.value}</p>
+                <div class="criticalCard flex absolute w-[100%] left-0 bottom-[2.8rem] text-[8px] text-[#ffd972] justify-center gap-1 ">
+                    <div class="flex flex-col items-center">
+                        <p>Pac</p>
+                        <p class="font-semibold">88</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <p>Sho</p>
+                        <p class="font-semibold">88</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <p>Pas</p>
+                        <p class="font-semibold">88</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <p>Dri</p>
+                        <p class="font-semibold">88</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <p>Def</p>
+                        <p class="font-semibold">88</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <p>Phy</p>
+                        <p class="font-semibold">88</p>
+                    </div>
+                </div>
+                <div class=" flags flex h-[10px] gap-3 my-1 justify-center absolute right-0 left-0 bottom-7">
+                    <div class="country flex items-center">
+                        <img class="h-[80%]" src="https://cdn.sofifa.net/flags/ar.png" alt="">
+                    </div>
+                    <div class="club">
+                        <img class="h-[100%]" src="https://cdn.sofifa.net/meta/team/239235/120.png" alt="">
+                    </div>
+                </div>
+            </div>
+</button>
+        </div>
+    </li>
+</ul> -->
 
 
+
+
+
+<!-- Script Js For Icons From FontAwsome -->
 <script src="https://kit.fontawesome.com/285f192ded.js" crossorigin="anonymous"></script>
+
+
 <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/tom-select@2.4.1/dist/js/tom-select.complete.min.js"></script>
 <script type="text/javascript" src="https://unpkg.com/imagekit-javascript/dist/imagekit.min.js"></script>
 <script src="./assets/src/script/script.js"></script>
-<!-- Script Js For Icons From FontAwsome -->
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tilt.js/1.2.1/tilt.jquery.min.js"></script>
+<script src="https://unpkg.com/tilt.js@1.2.1/dest/tilt.jquery.min.js"></script>
 </body>
 </html>
