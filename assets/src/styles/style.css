@@ -41,6 +41,14 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
+.ModifSuppChang{
+  scale: 0;
+  transition: .2s;
+}
+
+.cardPlayerOfficiale:hover .ModifSuppChang{
+  scale: 1;
+}
 
 
 #formation{

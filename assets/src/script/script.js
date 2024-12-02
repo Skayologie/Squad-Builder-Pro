@@ -551,6 +551,12 @@ function ChangeFromRemp(ChangeId){
     
 }
 
+/** FN - 8 - REG EXP**/
+
+function regex(checking){
+    let namePattern = /^[a-zA-Z\s]+$/
+    return namePattern.test(checking)
+}
 
 /******************************* All Events ***********************************/
 /* EV - 1 - Change The Formation */
@@ -564,213 +570,228 @@ SelectFormation.addEventListener("change",()=>{
 /* EV - 2 - Add PLayer */
 /*** Event => (click) When The User Click on the Add Player button will add it to the terrain ***/
 AddButton.addEventListener("click" , ()=>{
+    let imageFile = document.getElementById("image").files[0]
     let PlayerId = parseInt(localStorage.getItem("PlayerId")) // Get The Current ID from the Local Storage
-    if (!isGK) {
-        // Write The Object That Will Store All Data From User That Will Push To The LocalStorage After .
-        let allDataInputs = {
-            id : PlayerId+1 ,
-            Name : document.getElementById("name").value,
-            ImageUrl : urlimg,
-            Position : PositionSelect,
-            Nationality : document.getElementById("nations").textContent,
-            NationalityFlag : nations.getValue(),
-            Club : document.getElementById("clubs").textContent,
-            ClubFlag : clubs.getValue(),
-            CardCover : Cover.getValue(),
-            rating : document.getElementById("NormalPlayerRating").value,
-            pace : document.getElementById("NormalPlayerPace").value,
-            shooting : document.getElementById("NormalPlayerShooting").value,
-            passing : document.getElementById("NormalPlayerPassing").value,
-            dribbling : document.getElementById("NormalPlayerDribbling").value,
-            defending : document.getElementById("NormalPlayerDefending").value,
-            physical : document.getElementById("NormalPlayerPhysical").value
+    let regexReturn = regex(document.getElementById("name").value)
+    if (regexReturn === true) {
+        document.getElementById("NameRegex").classList.add("hidden")
+        if (!imageFile) {
+            document.getElementById("FileRegex").classList.remove("hidden")
+        }else{
+        if (!isGK) {
+            // Write The Object That Will Store All Data From User That Will Push To The LocalStorage After .
+            let allDataInputs = {
+                id : PlayerId+1 ,
+                Name : document.getElementById("name").value,
+                ImageUrl : urlimg,
+                Position : PositionSelect,
+                Nationality : document.getElementById("nations").textContent,
+                NationalityFlag : nations.getValue(),
+                Club : document.getElementById("clubs").textContent,
+                ClubFlag : clubs.getValue(),
+                CardCover : Cover.getValue(),
+                rating : document.getElementById("NormalPlayerRating").value,
+                pace : document.getElementById("NormalPlayerPace").value,
+                shooting : document.getElementById("NormalPlayerShooting").value,
+                passing : document.getElementById("NormalPlayerPassing").value,
+                dribbling : document.getElementById("NormalPlayerDribbling").value,
+                defending : document.getElementById("NormalPlayerDefending").value,
+                physical : document.getElementById("NormalPlayerPhysical").value
+            }
+            document.querySelector("#"+idOfEle +" .cardPlayerOfficiale").innerHTML = "" // Amptying The Card For Add New Player
+            AllDataArraysOfEveryPlayer.push(allDataInputs) // Push The All Data That Collect From User To The List Of Data Players
+            localStorage.setItem('AllPlayersData',JSON.stringify(AllDataArraysOfEveryPlayer)) // Add The New List That Stored The New Player To The Local Storage
+            localStorage.setItem("PlayerId",PlayerId+1) // incremment The Id Of The Players To The Local Storage
+            // Operations Just For The Styling
+            FormAddplayer.classList.add("hidden") 
+            document.getElementById("TheEmptyMessage").style.display = "flex"
+            document.getElementById(idOfEle).classList.add(idOfEle)
+            document.querySelector("#"+idOfEle +" .CardParDefault").classList.add("hidden")
+            document.querySelector("#"+idOfEle +" .cardPlayerOfficiale").classList.remove("hidden")
+            
+            // Add Player To The Stad 
+            document.querySelector("#"+idOfEle +" .cardPlayerOfficiale").innerHTML = `
+                        <div style="z-index:20; " class="ModifSuppChang text-white absolute bg-[black] p-3 rounded-[5px] flex flex-col gap-6 right-0 translate-x-[40%] float-right">
+                            <div onclick="supprime(${allDataInputs.id},'${idOfEle}')" class="Supp">
+                                <i class="fa-solid fa-xmark"></i>
+                            </div>
+                            <div idPlayer="${allDataInputs.id}" onclick="modification(${allDataInputs.id},'${idOfEle}')" class="Modif" >
+                                <i idPlayer="${allDataInputs.id}"  class="fa-solid fa-pen"></i>
+                            </div>
+                            <div onclick="ChangeThePlayer()" class="Changement">
+                                <i class="fas fa-exchange"></i>
+                            </div>
+                        </div>
+                        <div class="BadgeCover">
+                            <img class="w-[140px]" style=" height:100%;" src="${allDataInputs.CardCover}" alt="">
+                        </div>    
+                        <div style="justify-self: center;height: 93px;overflow: hidden;top: 43px;" class="flex justify-center w-[-webkit-fill-available] informationsBadges absolute top-0 right-0">
+                            <div class="image relative flex justify-center self-center w-[78%]  ">
+                                <img class="urlImg" src="${allDataInputs.ImageUrl}" alt="">
+                            </div>
+                        </div>   
+                        <div class=" Info absolute top-0 w-[100%] flex flex-col text-[#ffd972]  h-[100%]">
+                            <div class="absolute top-[3.5rem] left-7  text-4xl font-bold">
+                                <p>${allDataInputs.rating}</p>
+                                <p class="positionSelect text-xl mt-[-5px]  text-center">${allDataInputs.Position}</p>
+                            </div>
+                            <p class=" font-bold text-[15px] text-center absolute w-[100%] top-[9.8rem]">${allDataInputs.Name}</p>
+                            <div class="criticalCard flex absolute w-[100%] left-0 bottom-[2.8rem] text-[8px] text-[#ffd972] justify-center gap-1 ">
+                                <div class="flex flex-col items-center">
+                                    <p>Pac</p>
+                                    <p class="font-semibold">${allDataInputs.pace}</p>
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <p>Sho</p>
+                                    <p class="font-semibold">${allDataInputs.shooting}</p>
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <p>Pas</p>
+                                    <p class="font-semibold">${allDataInputs.passing}</p>
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <p>Dri</p>
+                                    <p class="font-semibold">${allDataInputs.dribbling}</p>
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <p>Def</p>
+                                    <p class="font-semibold">${allDataInputs.defending}</p>
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <p>Phy</p>
+                                    <p class="font-semibold">${allDataInputs.physical}</p>
+                                </div>
+                            </div>
+                            <div class=" flags flex h-[10px] gap-3 my-1 justify-center absolute right-0 left-0 bottom-7">
+                                <div class="country flex items-center">
+                                    <img class="h-[80%]" src="${allDataInputs.NationalityFlag}" alt="">
+                                </div>
+                                <div class="club">
+                                    <img class="h-[100%]" src="${allDataInputs.ClubFlag}" alt="">
+                                </div>
+                            </div>
+                            
+                            </div>
+                            <p style="filter:blur(20px); z-index:-1; background: rgba(16, 16, 16, 0.7);border-radius: 50%;width: 60px; box-shadow: 0 0 0 0 rgb(0, 0, 0);transform: scale(1) translate(-50%, -100%);rotate: x 45deg;height: 40px;position: absolute;left: 50%;color: white;" class="bg-red-500 flex justify-center items-center z-[-2] font-bold"></p>    
+            `
+    
+            
+    
+        }else{
+            let allDataInputs = {
+                id : PlayerId+1 ,
+                Name : document.getElementById("name").value,
+                ImageUrl : urlimg,
+                Position : PositionSelect,
+                Nationality : document.getElementById("nations").textContent,
+                NationalityFlag : document.getElementById("nations").value,
+                Club : document.getElementById("clubs").textContent,
+                ClubFlag : document.getElementById("clubs").value,
+                CardCover : document.getElementById("Cover").value,
+                rating : document.getElementById("GKRating").value,
+                diving : document.getElementById("GKDiving").value,
+                handling : document.getElementById("GKHandling").value,
+                kicking : document.getElementById("GKKicking").value,
+                reflexes : document.getElementById("GKReflexes").value,
+                speed : document.getElementById("GKSpeed").value,
+                positioning : document.getElementById("GKPositioning").value
+            }
+            document.querySelector("#"+ idOfEle +" .cardPlayerOfficiale").innerHTML = ""
+        
+            AllDataArraysOfEveryPlayer.push(allDataInputs)
+            localStorage.setItem('AllPlayersData',JSON.stringify(AllDataArraysOfEveryPlayer))
+        
+            FormAddplayer.classList.add("hidden")
+            document.getElementById("TheEmptyMessage").style.display = "block"
+        
+            localStorage.setItem("PlayerId",PlayerId+1)
+            document.querySelector("#"+idOfEle +" .CardParDefault").classList.add("hidden")
+            document.querySelector("#"+idOfEle +" .cardPlayerOfficiale").classList.remove("hidden")
+            document.querySelector("#"+idOfEle +" .cardPlayerOfficiale").innerHTML  = `
+                        <div style="z-index:20;" class="ModifSuppChang text-white absolute bg-[black] p-3 rounded-[5px] flex flex-col gap-6 right-0 translate-x-[40%] float-right">
+                            <div class="Supp">
+                                <i class="fa-solid fa-xmark"></i>
+                            </div>
+                            <div idPlayer="${allDataInputs.id}" onclick="modification(${allDataInputs.id},'${idOfEle}',${PositionSelect})" class="Modif">
+                                <i class="fa-solid fa-pen"></i>
+                            </div>
+                            <div onclick="ChangeThePlayer()" class="Changement">
+                                <i class="fas fa-exchange"></i>
+                            </div>
+                        </div>
+                        <div class="BadgeCover">
+                            <img class="w-[140px]" style=" height:100%;" src="${allDataInputs.CardCover}" alt="">
+                        </div>    
+                        <div style="justify-self: center;height: 93px;overflow: hidden;top: 43px;" class="flex justify-center w-[-webkit-fill-available] informationsBadges absolute top-0 right-0">
+                            <div class="image relative top-8 flex justify-center self-center w-[78%]  ">
+                                <img class="" src="${allDataInputs.ImageUrl}" alt="">
+                            </div>
+                        </div>   
+                        <div class=" Info absolute top-0 w-[100%] flex flex-col text-[#ffd972]  h-[100%]">
+                            <div class="absolute top-[3.5rem] left-7  text-4xl font-bold">
+                                <p>95</p>
+                                <p class="text-xl mt-[-5px]  text-center">${allDataInputs.Position}</p>
+                            </div>
+                            <p class=" font-bold text-[15px] text-center absolute w-[100%] top-[9.8rem]">${allDataInputs.Name}</p>
+                            <div class="criticalCard flex absolute w-[100%] left-0 bottom-[2.8rem] text-[8px] text-[#ffd972] justify-center gap-1 ">
+                                <div class="flex flex-col items-center">
+                                    <p>Div</p>
+                                    <p class="font-semibold">${allDataInputs.diving}</p>
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <p>Hand</p>
+                                    <p class="font-semibold">${allDataInputs.handling}</p>
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <p>Kick</p>
+                                    <p class="font-semibold">${allDataInputs.kicking}</p>
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <p>Ref</p>
+                                    <p class="font-semibold">${allDataInputs.reflexes}</p>
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <p>Spd</p>
+                                    <p class="font-semibold">${allDataInputs.speed}</p>
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <p>Pos</p>
+                                    <p class="font-semibold">${allDataInputs.positioning}</p>
+                                </div>
+                            </div>
+                            <div class=" flags flex h-[10px] gap-3 my-1 justify-center absolute right-0 left-0 bottom-7">
+                                <div class="country flex items-center">
+                                    <img class="h-[80%]" src="${allDataInputs.NationalityFlag}" alt="">
+                                </div>
+                                <div class="club">
+                                    <img class="h-[100%]" src="${allDataInputs.ClubFlag}" alt="">
+                                </div>
+                            </div>
+                        </div>
+            `
+            idOfEle = ""
+    
+    
+            let AllSupp = document.querySelectorAll('.Supp')
+            for (const element of AllSupp) {
+                element.addEventListener("click",(e)=>{
+                    let TheCardId = e.target.offsetParent.offsetParent.id
+                    console.log(TheCardId)
+                    let CardParDefault = document.getElementById(TheCardId).querySelector(".CardParDefault")
+                    let cardPlayerOfficiale = document.getElementById(TheCardId).querySelector(".cardPlayerOfficiale")
+                    CardParDefault.classList.remove("hidden")
+                    cardPlayerOfficiale.innerHTML = '';
+                })
+            }
+            
         }
-        document.querySelector("#"+idOfEle +" .cardPlayerOfficiale").innerHTML = "" // Amptying The Card For Add New Player
-        AllDataArraysOfEveryPlayer.push(allDataInputs) // Push The All Data That Collect From User To The List Of Data Players
-        localStorage.setItem('AllPlayersData',JSON.stringify(AllDataArraysOfEveryPlayer)) // Add The New List That Stored The New Player To The Local Storage
-        localStorage.setItem("PlayerId",PlayerId+1) // incremment The Id Of The Players To The Local Storage
-        // Operations Just For The Styling
-        FormAddplayer.classList.add("hidden") 
-        document.getElementById("TheEmptyMessage").style.display = "flex"
-        document.getElementById(idOfEle).classList.add(idOfEle)
-        document.querySelector("#"+idOfEle +" .CardParDefault").classList.add("hidden")
-        document.querySelector("#"+idOfEle +" .cardPlayerOfficiale").classList.remove("hidden")
-        
-        // Add Player To The Stad 
-        document.querySelector("#"+idOfEle +" .cardPlayerOfficiale").innerHTML = `
-                    <div style="z-index:20;" class="ModifSuppChang text-white absolute bg-[black] p-3 rounded-[5px] flex flex-col gap-6 right-0 translate-x-[40%] float-right">
-                        <div onclick="supprime(${allDataInputs.id},'${idOfEle}')" class="Supp">
-                            <i class="fa-solid fa-xmark"></i>
-                        </div>
-                        <div idPlayer="${allDataInputs.id}" onclick="modification(${allDataInputs.id},'${idOfEle}')" class="Modif" >
-                            <i idPlayer="${allDataInputs.id}"  class="fa-solid fa-pen"></i>
-                        </div>
-                        <div onclick="ChangeThePlayer()" class="Changement">
-                            <i class="fas fa-exchange"></i>
-                        </div>
-                    </div>
-                    <div class="BadgeCover">
-                        <img class="w-[140px]" style=" height:100%;" src="${allDataInputs.CardCover}" alt="">
-                    </div>    
-                    <div style="justify-self: center;height: 93px;overflow: hidden;top: 43px;" class="flex justify-center w-[-webkit-fill-available] informationsBadges absolute top-0 right-0">
-                        <div class="image relative flex justify-center self-center w-[78%]  ">
-                            <img class="urlImg" src="${allDataInputs.ImageUrl}" alt="">
-                        </div>
-                    </div>   
-                    <div class=" Info absolute top-0 w-[100%] flex flex-col text-[#ffd972]  h-[100%]">
-                        <div class="absolute top-[3.5rem] left-7  text-4xl font-bold">
-                            <p>${allDataInputs.rating}</p>
-                            <p class="positionSelect text-xl mt-[-5px]  text-center">${allDataInputs.Position}</p>
-                        </div>
-                        <p class=" font-bold text-[15px] text-center absolute w-[100%] top-[9.8rem]">${allDataInputs.Name}</p>
-                        <div class="criticalCard flex absolute w-[100%] left-0 bottom-[2.8rem] text-[8px] text-[#ffd972] justify-center gap-1 ">
-                            <div class="flex flex-col items-center">
-                                <p>Pac</p>
-                                <p class="font-semibold">${allDataInputs.pace}</p>
-                            </div>
-                            <div class="flex flex-col items-center">
-                                <p>Sho</p>
-                                <p class="font-semibold">${allDataInputs.shooting}</p>
-                            </div>
-                            <div class="flex flex-col items-center">
-                                <p>Pas</p>
-                                <p class="font-semibold">${allDataInputs.passing}</p>
-                            </div>
-                            <div class="flex flex-col items-center">
-                                <p>Dri</p>
-                                <p class="font-semibold">${allDataInputs.dribbling}</p>
-                            </div>
-                            <div class="flex flex-col items-center">
-                                <p>Def</p>
-                                <p class="font-semibold">${allDataInputs.defending}</p>
-                            </div>
-                            <div class="flex flex-col items-center">
-                                <p>Phy</p>
-                                <p class="font-semibold">${allDataInputs.physical}</p>
-                            </div>
-                        </div>
-                        <div class=" flags flex h-[10px] gap-3 my-1 justify-center absolute right-0 left-0 bottom-7">
-                            <div class="country flex items-center">
-                                <img class="h-[80%]" src="${allDataInputs.NationalityFlag}" alt="">
-                            </div>
-                            <div class="club">
-                                <img class="h-[100%]" src="${allDataInputs.ClubFlag}" alt="">
-                            </div>
-                        </div>
-                        
-                        </div>
-                        <p style="filter:blur(20px); z-index:-1; background: rgba(16, 16, 16, 0.7);border-radius: 50%;width: 60px; box-shadow: 0 0 0 0 rgb(0, 0, 0);transform: scale(1) translate(-50%, -100%);rotate: x 45deg;height: 40px;position: absolute;left: 50%;color: white;" class="bg-red-500 flex justify-center items-center z-[-2] font-bold"></p>    
-        `
-
-        
-
+    }
     }else{
-        let allDataInputs = {
-            id : PlayerId+1 ,
-            Name : document.getElementById("name").value,
-            ImageUrl : urlimg,
-            Position : PositionSelect,
-            Nationality : document.getElementById("nations").textContent,
-            NationalityFlag : document.getElementById("nations").value,
-            Club : document.getElementById("clubs").textContent,
-            ClubFlag : document.getElementById("clubs").value,
-            CardCover : document.getElementById("Cover").value,
-            rating : document.getElementById("GKRating").value,
-            diving : document.getElementById("GKDiving").value,
-            handling : document.getElementById("GKHandling").value,
-            kicking : document.getElementById("GKKicking").value,
-            reflexes : document.getElementById("GKReflexes").value,
-            speed : document.getElementById("GKSpeed").value,
-            positioning : document.getElementById("GKPositioning").value
+        document.getElementById("NameRegex").classList.remove("hidden")
+        if (!imageFile) {
+            document.getElementById("FileRegex").classList.remove("hidden")
+            
         }
-        document.querySelector("#"+ idOfEle +" .cardPlayerOfficiale").innerHTML = ""
-    
-        AllDataArraysOfEveryPlayer.push(allDataInputs)
-        localStorage.setItem('AllPlayersData',JSON.stringify(AllDataArraysOfEveryPlayer))
-    
-        FormAddplayer.classList.add("hidden")
-        document.getElementById("TheEmptyMessage").style.display = "block"
-    
-        localStorage.setItem("PlayerId",PlayerId+1)
-        document.querySelector("#"+idOfEle +" .CardParDefault").classList.add("hidden")
-        document.querySelector("#"+idOfEle +" .cardPlayerOfficiale").classList.remove("hidden")
-        document.querySelector("#"+idOfEle +" .cardPlayerOfficiale").innerHTML  = `
-                    <div style="z-index:20;" class="ModifSuppChang text-white absolute bg-[black] p-3 rounded-[5px] flex flex-col gap-6 right-0 translate-x-[40%] float-right">
-                        <div class="Supp">
-                            <i class="fa-solid fa-xmark"></i>
-                        </div>
-                        <div idPlayer="${allDataInputs.id}" onclick="modification(${allDataInputs.id},'${idOfEle}',${PositionSelect})" class="Modif">
-                            <i class="fa-solid fa-pen"></i>
-                        </div>
-                        <div onclick="ChangeThePlayer()" class="Changement">
-                            <i class="fas fa-exchange"></i>
-                        </div>
-                    </div>
-                    <div class="BadgeCover">
-                        <img class="w-[140px]" style=" height:100%;" src="${allDataInputs.CardCover}" alt="">
-                    </div>    
-                    <div style="justify-self: center;height: 93px;overflow: hidden;top: 43px;" class="flex justify-center w-[-webkit-fill-available] informationsBadges absolute top-0 right-0">
-                        <div class="image relative top-8 flex justify-center self-center w-[78%]  ">
-                            <img class="" src="${allDataInputs.ImageUrl}" alt="">
-                        </div>
-                    </div>   
-                    <div class=" Info absolute top-0 w-[100%] flex flex-col text-[#ffd972]  h-[100%]">
-                        <div class="absolute top-[3.5rem] left-7  text-4xl font-bold">
-                            <p>95</p>
-                            <p class="text-xl mt-[-5px]  text-center">${allDataInputs.Position}</p>
-                        </div>
-                        <p class=" font-bold text-[15px] text-center absolute w-[100%] top-[9.8rem]">${allDataInputs.Name}</p>
-                        <div class="criticalCard flex absolute w-[100%] left-0 bottom-[2.8rem] text-[8px] text-[#ffd972] justify-center gap-1 ">
-                            <div class="flex flex-col items-center">
-                                <p>Div</p>
-                                <p class="font-semibold">${allDataInputs.diving}</p>
-                            </div>
-                            <div class="flex flex-col items-center">
-                                <p>Hand</p>
-                                <p class="font-semibold">${allDataInputs.handling}</p>
-                            </div>
-                            <div class="flex flex-col items-center">
-                                <p>Kick</p>
-                                <p class="font-semibold">${allDataInputs.kicking}</p>
-                            </div>
-                            <div class="flex flex-col items-center">
-                                <p>Ref</p>
-                                <p class="font-semibold">${allDataInputs.reflexes}</p>
-                            </div>
-                            <div class="flex flex-col items-center">
-                                <p>Spd</p>
-                                <p class="font-semibold">${allDataInputs.speed}</p>
-                            </div>
-                            <div class="flex flex-col items-center">
-                                <p>Pos</p>
-                                <p class="font-semibold">${allDataInputs.positioning}</p>
-                            </div>
-                        </div>
-                        <div class=" flags flex h-[10px] gap-3 my-1 justify-center absolute right-0 left-0 bottom-7">
-                            <div class="country flex items-center">
-                                <img class="h-[80%]" src="${allDataInputs.NationalityFlag}" alt="">
-                            </div>
-                            <div class="club">
-                                <img class="h-[100%]" src="${allDataInputs.ClubFlag}" alt="">
-                            </div>
-                        </div>
-                    </div>
-        `
-        idOfEle = ""
-
-
-        let AllSupp = document.querySelectorAll('.Supp')
-        for (const element of AllSupp) {
-            element.addEventListener("click",(e)=>{
-                let TheCardId = e.target.offsetParent.offsetParent.id
-                console.log(TheCardId)
-                let CardParDefault = document.getElementById(TheCardId).querySelector(".CardParDefault")
-                let cardPlayerOfficiale = document.getElementById(TheCardId).querySelector(".cardPlayerOfficiale")
-                CardParDefault.classList.remove("hidden")
-                cardPlayerOfficiale.innerHTML = '';
-            })
-        }
-        
     }
     nations.clear();
     clubs.clear();
@@ -861,6 +882,22 @@ for (const element of theRange) {
         element.querySelector("p").textContent = element.querySelector("input").value
     })
 }
+
+
+
+// let cardChange = document.querySelectorAll(".cardChange")
+// cardChange.forEach(element => {
+//     element.addEventListener("click",(e)=>{
+//         console.log(element)
+//         idOfEle = e.target.id
+//         document.getElementById("TheEmptyMessage").style.display = "none"
+//         FormAddplayer.classList.remove("hidden")
+        
+//     })
+// });
+
+
+
 
 
 
@@ -963,5 +1000,4 @@ const Cover = new TomSelect('#Cover',{
       }
     },
 });
-
 /*------------------------------------------------------------------------------------------------*/
